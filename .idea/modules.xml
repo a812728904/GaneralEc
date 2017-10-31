@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GeneralEc.iml" filepath="$PROJECT_DIR$/GeneralEc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-annotactions/general-annotactions.iml" filepath="$PROJECT_DIR$/general-annotactions/general-annotactions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-compiler/general-compiler.iml" filepath="$PROJECT_DIR$/general-compiler/general-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-core/general-core.iml" filepath="$PROJECT_DIR$/general-core/general-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-ec/general-ec.iml" filepath="$PROJECT_DIR$/general-ec/general-ec.iml" />
+    </modules>
+  </component>
+</project>
