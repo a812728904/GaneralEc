@@ -3,6 +3,8 @@ package com.lmx.general_core.base;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import butterknife.ButterKnife;
+
 /**
  * Author:BaseActivity
  * Created by LMX on 2018/3/27.
@@ -15,8 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawable(null);
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResID());
-       // ButterKnife.bind(this);
-
+        ButterKnife.bind(this);
         initData();
 
     }
