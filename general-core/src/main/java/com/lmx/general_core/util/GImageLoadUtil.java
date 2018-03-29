@@ -15,7 +15,7 @@ public class GImageLoadUtil {
 	private static GImageLoadUtil gImageLoad;
 
 	private GImageLoadUtil() {
-	};
+	}
 
 	private String imageUrl;
 

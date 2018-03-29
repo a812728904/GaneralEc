@@ -13,12 +13,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * Author:RestCreate
+ * Author:RetrofitCreate
  * Created by LMX on 2018/3/27.
- * Description:
+ * Description: retrofit初始化设置
  */
 
-public class RestCreate {
+public class RetrofitCreate {
     /**
      * 参数容器
      */

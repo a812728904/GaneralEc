@@ -19,11 +19,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(setLayoutResID());
         ButterKnife.bind(this);
         initData();
-
     }
     /*
-        * 返回
-        */
+     * 返回
+     */
     public void doBack(View view) {
         onBackPressed();
     }

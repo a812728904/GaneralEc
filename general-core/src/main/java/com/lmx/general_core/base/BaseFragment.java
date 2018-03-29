@@ -23,8 +23,4 @@ public abstract class BaseFragment extends Fragment  {
         return view;
     }
     protected abstract void initData();
-
-
-
-
 }
