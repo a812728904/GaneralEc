@@ -13,7 +13,7 @@ public class General {
     public static Configurator init(Context context) {
         Configurator.getInstance()
                 .getLatteConfigs()
-                .put(com.lmx.general_core.ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
+                .put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
@@ -26,11 +26,11 @@ public class General {
     }
 
     public static Context getApplicationContext() {
-        return getConfiguration(com.lmx.general_core.ConfigKeys.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 
     public static Handler getHandler() {
-        return getConfiguration(com.lmx.general_core.ConfigKeys.HANDLER);
+        return getConfiguration(ConfigKeys.HANDLER);
     }
 
 

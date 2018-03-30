@@ -3,14 +3,10 @@ package com.lmx.general_core.app;
 import android.app.Activity;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
-import com.lmx.general_core.ConfigKeys;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import okhttp3.Interceptor;
 
 /**

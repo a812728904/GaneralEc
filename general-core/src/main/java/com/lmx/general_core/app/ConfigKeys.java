@@ -1,4 +1,4 @@
-package com.lmx.general_core;
+package com.lmx.general_core.app;
 
 /**
  * Author:ConfigKeys
