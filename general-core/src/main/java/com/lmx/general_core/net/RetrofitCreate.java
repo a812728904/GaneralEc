@@ -1,6 +1,7 @@
 package com.lmx.general_core.net;
 
-import com.lmx.general_core.ConfigKeys;
+
+import com.lmx.general_core.app.ConfigKeys;
 import com.lmx.general_core.app.General;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * Description: retrofit初始化设置
  */
 
-public class RetrofitCreate {
+public final class RetrofitCreate {
     /**
      * 参数容器
      */
@@ -36,14 +37,14 @@ public class RetrofitCreate {
     private static final class OKHttpHolder {
         private static final int TIME_OUT = 60;
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
-        private static final ArrayList<Interceptor> INTERCEPTORS = General.getConfiguration(ConfigKeys.INTERCEPTOR);
+       // private static final ArrayList<Interceptor> INTERCEPTORS = General.getConfiguration(ConfigKeys.INTERCEPTOR);
 
         private static OkHttpClient.Builder addInterceptor() {
-            if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
+          /*  if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
                 for (Interceptor interceptor : INTERCEPTORS) {
                     BUILDER.addInterceptor(interceptor);
                 }
-            }
+            }*/
             return BUILDER;
         }
 

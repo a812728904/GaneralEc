@@ -2,7 +2,8 @@ package com.lmx.general_core.net.callback;
 
 import android.os.Handler;
 
-import com.lmx.general_core.ConfigKeys;
+
+import com.lmx.general_core.app.ConfigKeys;
 import com.lmx.general_core.app.General;
 import com.lmx.general_core.net.RetrofitCreate;
 import com.lmx.general_core.ui.loader.GeneralLoader;
@@ -15,7 +16,7 @@ import retrofit2.Response;
 /**
  * Author:RequestCallbacks
  * Created by LMX on 2018/3/29.
- * Description:
+ * Description:Retrofit请求回调管理类
  */
 
 public class RequestCallbacks implements Callback<String> {

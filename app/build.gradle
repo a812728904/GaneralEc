@@ -22,5 +22,4 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':general-ec')
-    annotationProcessor project(':general-compiler')
 }

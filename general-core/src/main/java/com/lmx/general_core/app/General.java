@@ -6,10 +6,10 @@ import android.os.Handler;
 /**
  * Author:General
  * Created by LMX on 2018/3/27.
- * Description: 项目管理类
+ * Description: 应用管理类
  */
 
-public class General {
+public final class General {
     public static Configurator init(Context context) {
         Configurator.getInstance()
                 .getLatteConfigs()
@@ -21,7 +21,7 @@ public class General {
         return Configurator.getInstance();
     }
 
-    public static <T> T getConfiguration(Object key) {
+    public  static <T> T getConfiguration(Object key) {
         return getConfigurator().getConfiguration(key);
     }
 

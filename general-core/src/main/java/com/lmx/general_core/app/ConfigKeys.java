@@ -3,7 +3,7 @@ package com.lmx.general_core.app;
 /**
  * Author:ConfigKeys
  * Created by LMX on 2018/3/27.
- * Description:
+ * Description: 应用配置枚举类
  */
 
 public enum  ConfigKeys {
