@@ -85,6 +85,7 @@ public class Configurator {
         return this;
     }
 
+
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         GANERAL_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);

@@ -165,7 +165,7 @@ public class RetrofitClient {
     }
 
     public final void download() {
-       /* new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
+        /*new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
                 SUCCESS, FAILURE, ERROR)
                 .handleDownload();*/
     }

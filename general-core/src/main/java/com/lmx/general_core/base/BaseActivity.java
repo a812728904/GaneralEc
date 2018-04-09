@@ -3,6 +3,11 @@ package com.lmx.general_core.base;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.lmx.general_core.net.callback.IError;
+import com.lmx.general_core.net.callback.IFailure;
+import com.lmx.general_core.net.callback.IRequest;
+import com.lmx.general_core.net.callback.ISuccess;
+
 import butterknife.ButterKnife;
 
 /**
@@ -10,7 +15,7 @@ import butterknife.ButterKnife;
  * Created by LMX on 2018/3/27.
  * Description: Activity的基类
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements ISuccess,IError,IRequest,IFailure{
     protected abstract int setLayoutResID();
     protected abstract void initData();
     protected void onCreate(android.os.Bundle savedInstanceState) {
@@ -35,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         /*overridePendingTransition(R.anim.slide_out_left,R.anim.slide_in_right);*/
     }
 
