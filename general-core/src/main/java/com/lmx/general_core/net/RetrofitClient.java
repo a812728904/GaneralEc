@@ -7,6 +7,7 @@ import com.lmx.general_core.net.callback.IFailure;
 import com.lmx.general_core.net.callback.IRequest;
 import com.lmx.general_core.net.callback.ISuccess;
 import com.lmx.general_core.net.callback.RequestCallbacks;
+import com.lmx.general_core.net.download.DownloadHandler;
 import com.lmx.general_core.ui.loader.GeneralLoader;
 import com.lmx.general_core.ui.loader.LoaderStyle;
 
@@ -14,9 +15,11 @@ import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -29,13 +32,6 @@ import retrofit2.Callback;
 public class RetrofitClient {
     private static final WeakHashMap<String, Object> PARAMS = RetrofitCreate.getParams();
     private final String URL;
-    private final IRequest REQUEST;
-    private final String DOWNLOAD_DIR;
-    private final String EXTENSION;
-    private final String NAME;
-    private final ISuccess SUCCESS;
-    private final IFailure FAILURE;
-    private final IError ERROR;
     private final RequestBody BODY;
     private final LoaderStyle LOADER_STYLE;
     private final File FILE;
@@ -43,26 +39,12 @@ public class RetrofitClient {
 
     RetrofitClient(String url,
                Map<String, Object> params,
-               String downloadDir,
-               String extension,
-               String name,
-               IRequest request,
-               ISuccess success,
-               IFailure failure,
-               IError error,
                RequestBody body,
                File file,
                Context context,
                LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
-        this.DOWNLOAD_DIR = downloadDir;
-        this.EXTENSION = extension;
-        this.NAME = name;
-        this.REQUEST = request;
-        this.SUCCESS = success;
-        this.FAILURE = failure;
-        this.ERROR = error;
         this.BODY = body;
         this.FILE = file;
         this.CONTEXT = context;
@@ -73,13 +55,11 @@ public class RetrofitClient {
         return new RetrofitClientBuilder();
     }
 
-    private void request(HttpMethod method) {
+    private Observable<String> request(HttpMethod method) {
         final RestService service = RetrofitCreate.getRestService();
-        Call<String> call = null;
+        Observable<String> call = null;
 
-        if (REQUEST != null) {
-            REQUEST.onRequestStart();
-        }
+
 
         if (LOADER_STYLE != null) {
             GeneralLoader.showLoading(CONTEXT, LOADER_STYLE);
@@ -115,58 +95,50 @@ public class RetrofitClient {
                 break;
         }
 
-        if (call != null) {
-            call.enqueue(getRequestCallback());
-        }
+       return call;
     }
 
-    private Callback<String> getRequestCallback() {
+  /*  private Callback<String> getRequestCallback() {
         return new RequestCallbacks(
-                REQUEST,
-                SUCCESS,
-                FAILURE,
-                ERROR,
                 LOADER_STYLE
         );
+    }*/
+
+    public final Observable<String> get() {
+        return request(HttpMethod.GET);
     }
 
-    public final void get() {
-        request(HttpMethod.GET);
-    }
-
-    public final void post() {
+    public final Observable<String> post() {
         if (BODY == null) {
-            request(HttpMethod.POST);
+            return request(HttpMethod.POST);
         } else {
             if (!PARAMS.isEmpty()) {
                 throw new RuntimeException("params must be null!");
             }
-            request(HttpMethod.POST_RAW);
+            return request(HttpMethod.POST_RAW);
         }
     }
 
-    public final void put() {
+    public final Observable<String> put() {
         if (BODY == null) {
-            request(HttpMethod.PUT);
+            return request(HttpMethod.PUT);
         } else {
             if (!PARAMS.isEmpty()) {
                 throw new RuntimeException("params must be null!");
             }
-            request(HttpMethod.PUT_RAW);
+            return request(HttpMethod.PUT_RAW);
         }
     }
 
-    public final void delete() {
-        request(HttpMethod.DELETE);
+    public final Observable<String> delete() {
+        return request(HttpMethod.DELETE);
     }
 
-    public final void upload() {
-        request(HttpMethod.UPLOAD);
+    public final Observable<String> upload() {
+       return request(HttpMethod.UPLOAD);
     }
 
-    public final void download() {
-        /*new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
-                SUCCESS, FAILURE, ERROR)
-                .handleDownload();*/
+    public final Observable<ResponseBody> download() {
+        return RetrofitCreate.getRestService().download(URL,PARAMS);
     }
 }
