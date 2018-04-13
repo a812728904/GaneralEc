@@ -1,15 +1,9 @@
 package com.lmx.general_core.net;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
-import com.lmx.general_core.net.callback.IError;
-import com.lmx.general_core.net.callback.IFailure;
-import com.lmx.general_core.net.callback.IRequest;
-import com.lmx.general_core.net.callback.ISuccess;
-import com.lmx.general_core.net.callback.RequestCallbacks;
-import com.lmx.general_core.net.download.DownloadHandler;
 import com.lmx.general_core.ui.loader.GeneralLoader;
-import com.lmx.general_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -20,8 +14,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 /**
  * Author:RetrofitClient
@@ -33,7 +25,7 @@ public class RetrofitClient {
     private static final WeakHashMap<String, Object> PARAMS = RetrofitCreate.getParams();
     private final String URL;
     private final RequestBody BODY;
-    private final LoaderStyle LOADER_STYLE;
+    private final String LOADMESS;
     private final File FILE;
     private final Context CONTEXT;
 
@@ -42,29 +34,31 @@ public class RetrofitClient {
                RequestBody body,
                File file,
                Context context,
-               LoaderStyle loaderStyle) {
+               String loadMess) {
         this.URL = url;
         PARAMS.putAll(params);
         this.BODY = body;
         this.FILE = file;
         this.CONTEXT = context;
-        this.LOADER_STYLE = loaderStyle;
+        this.LOADMESS = loadMess;
     }
 
     public static RetrofitClientBuilder builder() {
         return new RetrofitClientBuilder();
     }
 
+    @SuppressLint("NewApi")
     private Observable<String> request(HttpMethod method) {
         final RestService service = RetrofitCreate.getRestService();
         Observable<String> call = null;
 
-
-
-        if (LOADER_STYLE != null) {
-            GeneralLoader.showLoading(CONTEXT, LOADER_STYLE);
+        if (CONTEXT != null) {
+            if(LOADMESS!=null&&!LOADMESS.isEmpty()){
+                GeneralLoader.showLoading(CONTEXT, LOADMESS);
+            }else{
+                GeneralLoader.showLoading(CONTEXT);
+            }
         }
-
         switch (method) {
             case GET:
                 call = service.get(URL, PARAMS);

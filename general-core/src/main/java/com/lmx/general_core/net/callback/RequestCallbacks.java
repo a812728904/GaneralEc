@@ -7,7 +7,6 @@ import com.lmx.general_core.app.ConfigKeys;
 import com.lmx.general_core.app.General;
 import com.lmx.general_core.net.RetrofitCreate;
 import com.lmx.general_core.ui.loader.GeneralLoader;
-import com.lmx.general_core.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,15 +23,15 @@ public class RequestCallbacks implements Callback<String> {
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
-    private final LoaderStyle LOADER_STYLE;
+
     private static final Handler HANDLER = General.getHandler();
 
-    public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error, LoaderStyle style) {
+    public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error) {
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
         this.ERROR = error;
-        this.LOADER_STYLE = style;
+
     }
 
     @Override
@@ -66,7 +65,7 @@ public class RequestCallbacks implements Callback<String> {
 
     private void onRequestFinish() {
         final long delayed = General.getConfiguration(ConfigKeys.LOADER_DELAYED);
-        if (LOADER_STYLE != null) {
+/*        if (LOADER_STYLE != null) {
             HANDLER.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -74,6 +73,6 @@ public class RequestCallbacks implements Callback<String> {
                     GeneralLoader.stopLoading();
                 }
             }, delayed);
-        }
+        }*/
     }
 }

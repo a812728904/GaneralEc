@@ -34,32 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void testNet() {
 
-        Observable<String> stringObservable= RetrofitClient.builder().url("https://api.douban.com/v2/book/search?q=%E9%87%91%E7%93%B6%E6%A2%85&tag=&start=0&count=1")
-                .loader(this).build().get();
 
-            stringObservable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                mCompositeSubscription.add(d);
-            }
-
-            @Override
-            public void onNext(String s) {
-                ToastUtil.toToast(General.getApplicationContext(),s);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
 
 
     }
+
+
 }

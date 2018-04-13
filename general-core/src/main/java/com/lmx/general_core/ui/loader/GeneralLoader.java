@@ -8,7 +8,6 @@ import android.view.WindowManager;
 
 import com.lmx.general_core.R;
 import com.lmx.general_core.util.dimen.DimenUtil;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
@@ -21,21 +20,12 @@ import java.util.ArrayList;
 public class GeneralLoader {
     private static final int LOADER_SIZE_SCALE = 8;
     private static final int LOADER_OFFSET_SCALE = 10;
-
+    private static final String DEFAULTMESS="正在加载中请稍候.....";
     private static final ArrayList<AppCompatDialog> LOADERS = new ArrayList<>();
 
-    private static final String DEFAULT_LOADER = LoaderStyle.BallClipRotatePulseIndicator.name();
 
-    public static void showLoading(Context context, Enum<LoaderStyle> type) {
-       // showLoading(context, type.name());
-    }
-
-    public static void showLoading(Context context, String type) {
-
+    public static void showLoading(Context context,String loadMess) {
         final AppCompatDialog dialog = new AppCompatDialog(context, R.style.dialog);
-
-        final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type, context);
-        dialog.setContentView(avLoadingIndicatorView);
 
         int deviceWidth = DimenUtil.getScreenWidth();
         int deviceHeight = DimenUtil.getScreenHeight();
@@ -51,10 +41,11 @@ public class GeneralLoader {
         }
         LOADERS.add(dialog);
         dialog.show();
+
     }
 
     public static void showLoading(Context context) {
-        showLoading(context, DEFAULT_LOADER);
+        showLoading(context,DEFAULTMESS);
     }
 
     public static void stopLoading() {

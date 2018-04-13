@@ -2,12 +2,6 @@ package com.lmx.general_core.net;
 
 import android.content.Context;
 
-import com.lmx.general_core.net.callback.IError;
-import com.lmx.general_core.net.callback.IFailure;
-import com.lmx.general_core.net.callback.IRequest;
-import com.lmx.general_core.net.callback.ISuccess;
-import com.lmx.general_core.ui.loader.LoaderStyle;
-
 import java.io.File;
 import java.util.WeakHashMap;
 
@@ -24,10 +18,10 @@ public class RetrofitClientBuilder {
 
     private static final WeakHashMap<String, Object> PARAMS = RetrofitCreate.getParams();
     private String mUrl = null;
-
+    private String loadMess=null;
     private RequestBody mBody = null;
     private Context mContext = null;
-    private LoaderStyle mLoaderStyle = null;
+
     private File mFile = null;
 
 
@@ -67,21 +61,19 @@ public class RetrofitClientBuilder {
 
 
 
-    public final RetrofitClientBuilder loader(Context context, LoaderStyle style) {
+    public final RetrofitClientBuilder loader(Context context,String loadMess) {
         this.mContext = context;
-        this.mLoaderStyle = style;
+        this.loadMess=loadMess;
         return this;
     }
 
     public final RetrofitClientBuilder loader(Context context) {
         this.mContext = context;
-        this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
         return this;
     }
 
     public final RetrofitClient build() {
         return new RetrofitClient(mUrl, PARAMS,
-                mBody, mFile, mContext,
-                mLoaderStyle);
+                mBody, mFile, mContext,loadMess);
     }
 }

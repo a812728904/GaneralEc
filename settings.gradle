@@ -1,1 +1,1 @@
-include ':app', ':general-annotactions', ':general-compiler', ':general-core', ':general-ec'
+include ':app', ':general-annotactions', ':general-compiler', ':general-core'
