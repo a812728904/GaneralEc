@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-    api 'com.android.support:appcompat-v7:27.0.1'
+    api 'com.android.support:support-v4:27.1.1'
+    api 'com.android.support:appcompat-v7:27.1.1'
     //recyclerview
-    api 'com.android.support:recyclerview-v7:26.1.0'
+    api 'com.android.support:recyclerview-v7:27.1.1'
     //注解
     api 'com.android.support:support-annotations:27.1.1'
     //字体图标
@@ -32,5 +32,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     //分包
     api 'com.android.support:multidex:1.0.3'
-
+    implementation 'com.google.code.gson:gson:2.8.2'
 }

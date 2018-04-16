@@ -1,6 +1,7 @@
 package com.lmx.generalec.base;
 
 import android.os.Bundle;
+
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import butterknife.ButterKnife;
  * Created by LMX on 2018/3/27.
  * Description: Fragment的基类
  */
-public abstract class BaseFragment extends Fragment  {
+public abstract class BaseFragment extends Fragment {
     protected abstract int setLayoutResID();
     protected View view;
     @Override

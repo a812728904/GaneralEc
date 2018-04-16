@@ -3,12 +3,20 @@ package com.lmx.general_core.net.interceptors;
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.zip.GZIPInputStream;
 
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.Request;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
+import okio.GzipSink;
+import okio.Okio;
 
 /**
  * 打印网络请求时传输的字段还有返回的json数据
@@ -50,9 +58,7 @@ public class LogInterceptor extends BaseInterceptor {
         okhttp3.MediaType mediaType = response.body().contentType();
         String content = response.body().string();
         Log.v(TAG, String.format(Locale.getDefault(), "%s cost %.1fms%n%s", sb.toString(), (t2 - t1) / 1e6d, format(content)));
-        //格式化打印json
-        //       Log.v(TAG, String.format(Locale.getDefault(), "%s cost %.1fms%n%s", sb.toString(), (t2 - t1) / 1e6d, format(content)));
-//        Log.v(TAG, String.format(Locale.getDefault(), "%s cost %.1fms%n%s", sb.toString(), (t2 - t1) / 1e6d, content));
+
         return response.newBuilder()
                 .body(okhttp3.ResponseBody.create(mediaType, content))
                 .build();

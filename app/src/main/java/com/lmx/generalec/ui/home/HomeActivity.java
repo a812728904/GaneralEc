@@ -36,7 +36,7 @@ public  class HomeActivity extends BaseActivity<HomePresenter>  implements HomeC
 
     @Override
     protected void initData() {
-       // mPresenter.getHomeInfo();
+        mPresenter.getHomeInfo();
       /*  File file=Environment.getExternalStorageDirectory();
         filePath=file.getPath();
         Log.d("lmx","");

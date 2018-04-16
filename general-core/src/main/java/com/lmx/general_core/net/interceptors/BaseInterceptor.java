@@ -8,6 +8,11 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 
 public abstract class BaseInterceptor implements Interceptor {
+    /**
+     * 获得请求参数map集合
+     * @param chain
+     * @return
+     */
     protected LinkedHashMap<String, String> getUrlParameters(Chain chain) {
         final HttpUrl url = chain.request().url();
         int size = url.querySize();
@@ -17,7 +22,11 @@ public abstract class BaseInterceptor implements Interceptor {
         }
         return params;
     }
-
+    /**
+     * 获得指定请求参数
+     * @param chain
+     * @return
+     */
     protected String getUrlParameters(Chain chain, String key) {
         final Request request = chain.request();
         return request.url().queryParameter(key);
@@ -38,5 +47,14 @@ public abstract class BaseInterceptor implements Interceptor {
 
     protected String getBodyParameters(Chain chain, String key) {
         return getBodyParameters(chain).get(key);
+    }
+    /**
+     * 获得域名
+     * @param chain
+     * @return
+     */
+    protected String getHost(Chain chain) {
+        final HttpUrl url = chain.request().url();
+        return url.host();
     }
 }
