@@ -56,5 +56,6 @@ public class GeneralLoader {
                 }
             }
         }
+        LOADERS.removeAll(LOADERS);
     }
 }

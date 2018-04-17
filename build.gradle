@@ -19,7 +19,13 @@ allprojects {
         google()
     }
 }
-
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+//版本控制
+ext {
+    androidSupportSdkVersion = '27.1.1'
+    ioniconsVersion='2.2.2'
+
+
 }

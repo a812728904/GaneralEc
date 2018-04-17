@@ -24,6 +24,8 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 #---------------------------------2.第三方包-------------------------------
+
+
 #okhttputils
 -dontwarn com.lmx.general.**
 -keep class com.lmx.general.**{*;}
@@ -36,6 +38,7 @@
 -keep class okio.** { *; }
 -keep interface okio.** { *; }
 -dontwarn okio.**
+
 
 
 # Gson specific classes

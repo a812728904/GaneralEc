@@ -1,4 +1,4 @@
-package com.lmx.generalec.ui.home;
+package com.lmx.generalec.ui.home.contract;
 
 import com.lmx.general_core.base.BasePresenter;
 import com.lmx.general_core.base.BaseView;
@@ -6,11 +6,14 @@ import com.lmx.general_core.base.BaseView;
 import java.util.List;
 
 /**
- * Author:MainC
- * Created by LMX on 2018/4/11
+ * Author:HomeContract
+ * Created by LMX on 2018/4/17
  * Description:
  */
 public interface HomeContract {
+    interface Model {
+    }
+
     interface View extends BaseView {
         void showTabList(List<String> mTabs);
 

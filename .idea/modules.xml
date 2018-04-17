@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/general-annotactions/general-annotactions.iml" filepath="$PROJECT_DIR$/general-annotactions/general-annotactions.iml" />
       <module fileurl="file://$PROJECT_DIR$/general-compiler/general-compiler.iml" filepath="$PROJECT_DIR$/general-compiler/general-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/general-core/general-core.iml" filepath="$PROJECT_DIR$/general-core/general-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/general-ec/general-ec.iml" filepath="$PROJECT_DIR$/general-ec/general-ec.iml" />
     </modules>
   </component>
 </project>

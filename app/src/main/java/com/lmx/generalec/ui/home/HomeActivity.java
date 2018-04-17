@@ -1,18 +1,17 @@
 package com.lmx.generalec.ui.home;
 
-import android.os.Environment;
 import android.util.Log;
 
-import com.lmx.general_core.app.General;
 import com.lmx.general_core.util.ToastUtil;
 import com.lmx.generalec.R;
 import com.lmx.generalec.base.BaseActivity;
+import com.lmx.generalec.ui.home.contract.HomeContract;
+import com.lmx.generalec.ui.home.presenter.HomePresenter;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
@@ -51,7 +50,7 @@ public  class HomeActivity extends BaseActivity<HomePresenter>  implements HomeC
 
     @Override
     public void LoadHemoInfoSuccess(String js) {
-       ToastUtil.toToast(General.getApplicationContext(),js);
+       ToastUtil.toToast(js);
     }
      Subscription  mSubscription=null;
     public  void practice1() {

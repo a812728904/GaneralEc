@@ -6,6 +6,7 @@ import com.google.gson.JsonParseException;
 import com.lmx.general_core.R;
 import com.lmx.general_core.net.exception.NoDataExceptionException;
 import com.lmx.general_core.net.exception.ServerResponseException;
+import com.lmx.general_core.ui.loader.GeneralLoader;
 import com.lmx.general_core.util.LogUtils;
 import com.lmx.general_core.util.ToastUtil;
 
@@ -17,6 +18,7 @@ import java.net.UnknownHostException;
 import java.text.ParseException;
 
 import io.reactivex.Observer;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import retrofit2.HttpException;
 
@@ -25,10 +27,14 @@ import retrofit2.HttpException;
  * Created by LMX on 2018/4/16
  * Description:
  */
-public abstract class BaseObserver<T> implements Observer<T> {
+public abstract class DefaultObserver<T> implements Observer<T> {
+    private CompositeDisposable mCompositeSubscription;
+    public DefaultObserver(CompositeDisposable mCompositeSubscription){
+        this.mCompositeSubscription=mCompositeSubscription;
+    }
     @Override
     public void onSubscribe(Disposable d) {
-
+        mCompositeSubscription.add(d);
     }
 
     @Override
@@ -63,6 +69,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onComplete() {
+        onFinish();
     }
 
     /**
@@ -83,7 +90,9 @@ public abstract class BaseObserver<T> implements Observer<T> {
         ToastUtil.toToast(message);
     }
 
-    public void onFinish(){}
+    public void onFinish(){
+        GeneralLoader.stopLoading();
+    }
 
     /**
      * 请求异常

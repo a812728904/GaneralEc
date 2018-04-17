@@ -3,6 +3,7 @@ package com.lmx.general_core.net;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.lmx.general_core.net.util.RxSchedulers;
 import com.lmx.general_core.ui.loader.GeneralLoader;
 
 import java.io.File;
@@ -89,7 +90,7 @@ public class RetrofitClient {
                 break;
         }
 
-       return call;
+       return call.compose(RxSchedulers.io_main());
     }
 
   /*  private Callback<String> getRequestCallback() {
