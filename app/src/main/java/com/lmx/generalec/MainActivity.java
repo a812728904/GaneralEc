@@ -1,43 +1,39 @@
 package com.lmx.generalec;
 
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.Manifest;
 
-import com.lmx.general_core.app.General;
-import com.lmx.general_core.net.RestService;
-import com.lmx.general_core.net.RetrofitClient;
-import com.lmx.general_core.net.callback.IError;
-import com.lmx.general_core.net.callback.IFailure;
-import com.lmx.general_core.net.callback.ISuccess;
-import com.lmx.general_core.util.ToastUtil;
+import com.lmx.generalec.util.PermissionUtils;
+import com.lmx.generalec.base.BaseActivity;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    private static final int REQUEST_CODE = 0; // 请求码
+    // 所需的全部权限
+    static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.MODIFY_AUDIO_SETTINGS
+    };
 
     protected CompositeDisposable mCompositeSubscription = new CompositeDisposable();
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       testNet();
+    protected int setLayoutResID() {
+        return R.layout.activity_main;
     }
+
+    @Override
+    protected void initData() {
+        testNet();
+    }
+
+
 
     private void testNet() {
-
-
-
-
+        PermissionUtils.askRecord(this);
     }
+
 
 
 }

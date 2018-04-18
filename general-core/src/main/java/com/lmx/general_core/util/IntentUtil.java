@@ -23,4 +23,11 @@ public class IntentUtil {
 		}
 		((Activity)context).startActivityForResult(intent, requestCode);
 	}
+	public static Intent getIntent(Context context, Class to, Bundle bundle){
+		Intent intent = new Intent(context, to);
+		if (bundle != null) {
+			intent.putExtras(bundle);
+		}
+		return intent;
+	}
 }

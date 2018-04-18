@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <!--去掉边框-->
         <item name="android:windowFrame">@null</item>
@@ -12,9 +12,15 @@
         <!--背景透明-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <!--允许模糊-->
-        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimEnabled" tools:ignore="NewApi">true</item>
         <!--全屏幕-->
         <item name="android:windowFullscreen">true</item>
     </style>
-
+    <style name="NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="NoActionBar.Permissions">
+        <item name="android:windowBackground">@null</item>
+    </style>
 </resources>

@@ -10,4 +10,22 @@
     <string name="parse_error">解析服务器响应数据失败</string>
     <string name="unknown_error">未知错误</string>
     <string name="response_return_error">服务器返回数据失败</string>
+
+
+    <string name="permission">权限(permission)</string>
+    <string name="no_permissions">应用需要必要的运行权限</string>
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>
+    <string name="quit">退出</string>
+    <string name="read_calendar">程序需要访问系统日历如果禁止将无法使用该功能,请给予权限</string>
+    <string name="camera">程序需要调用系统相机禁止将无法使用该功能,请给予权限</string>
+    <string name="storage">程序需要调用文件读写信息功能,请给予权限</string>
+    <string name="read_phone_state">程序需要获得手机基本信息</string>
+    <string name="call_phone">程序需要获取唤起系统电话的功能,请给予权限</string>
+    <string name="send_sms">程序需要获取唤起系统短信的功能,请给予权限</string>
+    <string name="location">程序需要获得当前手机的位置信息,请给予权限</string>
+    <string name="microphone">程序需要使用麦克风,请给予权限</string>
+    <string name="sensors">程序需要使用传感器功能,请给予权限</string>
+    <string name="contacts">程序需要获取联系人列表,请给予权限</string>
 </resources>
