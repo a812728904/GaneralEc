@@ -4,8 +4,8 @@
     <application android:allowBackup="true"
         android:supportsRtl="true">
         <activity
-            android:name="com.lmx.generalec.base.PermissionsActivity"
-            android:theme="@style/NoActionBar.Permissions"/>
+            android:name="com.lmx.general_core.app.PermissionsActivity"
+           />
     </application>
 
 </manifest>

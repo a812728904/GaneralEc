@@ -20,7 +20,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="NoActionBar.Permissions">
+    <style name="NoActionBar.Permissions" parent="NoActionBar">
         <item name="android:windowBackground">@null</item>
     </style>
 </resources>

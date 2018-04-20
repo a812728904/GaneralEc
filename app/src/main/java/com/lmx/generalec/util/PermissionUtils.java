@@ -6,16 +6,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 
 import com.lmx.general_core.R;
 import com.lmx.general_core.app.General;
-import com.lmx.generalec.base.PermissionsActivity;
-import com.lmx.general_core.avoidonresult.ActivityResultInfo;
-import com.lmx.general_core.avoidonresult.AvoidOnResult;
+import com.lmx.general_core.app.PermissionsActivity;
+
 import com.lmx.general_core.util.IntentUtil;
 import com.lmx.general_core.util.ToastUtil;
+import com.lmx.general_core.util.avoidonresult.ActivityResultInfo;
+import com.lmx.general_core.util.avoidonresult.AvoidOnResult;
 
 import io.reactivex.functions.Consumer;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -28,15 +28,14 @@ import pub.devrel.easypermissions.EasyPermissions;
  */
 @SuppressLint("InlinedApi")
 public class PermissionUtils {
-    public final static int resultPermissionCode=10086;
     /**
      * 获取修改日历权限
      * group:android.permission-group.CALENDAR
      * permission:android.permission.READ_CALENDAR
      * permission:android.permission.WRITE_CALENDAR
      */
-    public static void askCalendar(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.read_calendar,toastMess),Manifest.permission.READ_CALENDAR);
+    public static void askCalendar(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.read_calendar,toastMess),Manifest.permission.READ_CALENDAR);
     }
 
     /**
@@ -44,8 +43,8 @@ public class PermissionUtils {
      * group:android.permission-group.CAMERA
      * permission:android.permission.CAMERA
      */
-    public static void askCamera(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.camera,toastMess),Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    public static void askCamera(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.camera,toastMess),Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     }
 
@@ -57,8 +56,8 @@ public class PermissionUtils {
      * permission:android.permission.WRITE_EXTERNAL_STORAG
      */
 
-    public static void askExternalStorage(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.storage,toastMess),Manifest.permission_group.STORAGE);
+    public static void askExternalStorage(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.storage,toastMess),Manifest.permission_group.STORAGE);
     }
 
     /**
@@ -72,11 +71,11 @@ public class PermissionUtils {
      * permission:android.permission.PROCESS_OUTGOING_CALLS
      * permission:com.android.voicemail.permission.ADD_VOICEMAIL
      */
-    public static void askPhone(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.read_phone_state,toastMess),Manifest.permission.READ_PHONE_STATE);
+    public static void askPhone(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.read_phone_state,toastMess),Manifest.permission.READ_PHONE_STATE);
     }
-    public static void askCallPhone(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.call_phone,toastMess),Manifest.permission.CALL_PHONE);
+    public static void askCallPhone(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.call_phone,toastMess),Manifest.permission.CALL_PHONE);
     }
 
     /**
@@ -89,8 +88,8 @@ public class PermissionUtils {
      * permission:android.permission.SEND_SMS
      * permission:android.permission.READ_CELL_BROADCASTS
      */
-    public static void askSms(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.send_sms,toastMess),Manifest.permission.SEND_SMS);
+    public static void askSms(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.send_sms,toastMess),Manifest.permission.SEND_SMS);
     }
 
 
@@ -102,8 +101,8 @@ public class PermissionUtils {
      * permission:android.permission.ACCESS_FINE_LOCATION
      * permission:android.permission.ACCESS_COARSE_LOCATION
      */
-    public static void askLocationInfo(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.location,toastMess),Manifest.permission_group.LOCATION);
+    public static void askLocationInfo(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.location,toastMess),Manifest.permission_group.LOCATION);
     }
 
 
@@ -112,8 +111,8 @@ public class PermissionUtils {
      * group:android.permission-group.MICROPHONE
      * permission:android.permission.RECORD_AUDIO
      */
-    public static void askRecord(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.microphone,toastMess),Manifest.permission.RECORD_AUDIO);
+    public static void askRecord(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.microphone,toastMess),Manifest.permission.RECORD_AUDIO);
 
     }
 
@@ -123,9 +122,9 @@ public class PermissionUtils {
      * group:android.permission-group.SENSORS
      * permission:android.permission.BODY_SENSORS
      */
-    public static void askSensors(Context context,String... toastMess){
+    public static void askSensors(Context context,PermissResult result,String... toastMess){
 
-        getPermissionIntent(context,isUsDefauleToast(R.string.sensors,toastMess),Manifest.permission_group.SENSORS);
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.sensors,toastMess),Manifest.permission_group.SENSORS);
     }
 
     /**
@@ -135,9 +134,11 @@ public class PermissionUtils {
      * permission:android.permission.GET_ACCOUNTS
      * permission:android.permission.READ_CONTACTS
      */
-    public static void askContacts(Context context,String... toastMess){
-        getPermissionIntent(context,isUsDefauleToast(R.string.contacts,toastMess),Manifest.permission_group.CONTACTS);
+    public static void askContacts(Context context,PermissResult result,String... toastMess){
+        getPermissionIntent(context,result,isUsDefauleToast(R.string.contacts,toastMess),Manifest.permission_group.CONTACTS);
     }
+
+
     public static String isUsDefauleToast(int defauleToastId,String... userToast){
         if(userToast==null||userToast.length==0)
             return (String) General.getApplicationContext().getResources().getText(defauleToastId);
@@ -150,20 +151,25 @@ public class PermissionUtils {
      * @param permission
      */
     @SuppressLint("CheckResult")
-    public static void getPermissionIntent(Context context, String toastMess, String permission){
+    public static void getPermissionIntent(Context context,PermissResult result,String toastMess, String permission){
         if(!verificationParams(context,permission))return;
         if(EasyPermissions.hasPermissions(context, permission)){
             ToastUtil.toToast("拥有"+permission+"权限");
+            result.permissOkResult();
         }else{
             Bundle bundle=new Bundle();
-            bundle.putString("toastMess","toastMess");
+            bundle.putString("toastMess",toastMess);
             bundle.putString("permission",permission);
             Intent intent= IntentUtil.getIntent(context,PermissionsActivity.class,bundle);
             new AvoidOnResult((Activity)context)
                     .startForResult(intent).subscribe(new Consumer<ActivityResultInfo>() {
                 @Override
                 public void accept(ActivityResultInfo activityResultInfo) throws Exception {
-                    Log.d("123123312","123123");
+                   Intent resultUtil= activityResultInfo.getData();
+                   if(resultUtil==null)return;
+                   if(activityResultInfo.getResultCode()==Activity.RESULT_OK){
+                       result.permissOkResult();
+                   }
                 }
             });
         }
@@ -178,6 +184,8 @@ public class PermissionUtils {
         return true;
     }
 
-
+    public interface PermissResult{
+        void permissOkResult();
+    }
 
 }

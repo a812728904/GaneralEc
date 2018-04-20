@@ -1,14 +1,10 @@
-package com.lmx.generalec.base;
+package com.lmx.general_core.app;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.lmx.general_core.R;
 import com.lmx.general_core.util.LogUtils;
@@ -32,7 +28,13 @@ public class PermissionsActivity extends AppCompatActivity implements EasyPermis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permissions);
-       loadPermissions();
+        loadPermissions();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     /**

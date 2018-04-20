@@ -7,8 +7,9 @@ import com.lmx.generalec.util.PermissionUtils;
 import com.lmx.generalec.base.BaseActivity;
 
 import io.reactivex.disposables.CompositeDisposable;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements PermissionUtils.PermissResult{
     private static final int REQUEST_CODE = 0; // 请求码
     // 所需的全部权限
     static final String[] PERMISSIONS = new String[]{
@@ -31,9 +32,13 @@ public class MainActivity extends BaseActivity {
 
 
     private void testNet() {
-        PermissionUtils.askRecord(this);
+        PermissionUtils.askRecord(this,this);
+
     }
 
 
+    @Override
+    public void permissOkResult() {
 
+    }
 }

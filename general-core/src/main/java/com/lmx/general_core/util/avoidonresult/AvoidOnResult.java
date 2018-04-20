@@ -1,4 +1,4 @@
-package com.lmx.general_core.avoidonresult;
+package com.lmx.general_core.util.avoidonresult;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
